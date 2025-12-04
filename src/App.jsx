@@ -30,7 +30,6 @@ export default function App() {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
-
   // Loading Sequence
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2500); 

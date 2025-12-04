@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { name: 'Contact', href: '#contact' },
 ];
 
+
 export const STATS = [
   { label: "Uptime Maintained", value: "99.99%" },
   { label: "Projects Delivered", value: "50+" },
