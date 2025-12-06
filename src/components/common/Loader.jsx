@@ -18,7 +18,7 @@ const InfinityLoader = () => {
             pathOffset: [0, 1]
           }}
           transition={{ 
-            duration: 2, 
+            duration: 0.5, 
             repeat: Infinity, 
             ease: "easeInOut" 
           }}
