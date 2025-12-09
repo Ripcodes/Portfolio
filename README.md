@@ -201,4 +201,4 @@ npm run build
 
 **DevOps Engineer | Cloud | Automation | CI/CD | AWS | Linux**  
 🌐 Portfolio: https://pranav.codzy.tech  
-🐙 GitHub: https://github.com/Ripcodes
+🐙 GitHub: https://github.com/pranavdaklepatil
