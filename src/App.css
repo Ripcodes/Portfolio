@@ -1,0 +1,104 @@
+/* --- Global Theme Variables --- */
+:root {
+  --bg-color: #ffffff;
+  --text-main: #202124;
+  --dot-color: #e0e0e0;
+  --grid-color: #f0f0f0;
+  font-family: 'Google Sans', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* --- Dark Mode Overrides --- */
+.dark {
+  --bg-color: #121212;
+  --text-main: #e8eaed;
+  --dot-color: #333333;
+  --grid-color: #1f1f1f;
+}
+
+/* --- Base Styles --- */
+body {
+  margin: 0;
+  display: flex;
+  place-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+}
+
+.mono { font-family: 'Roboto Mono', monospace; }
+
+/* --- Pattern Utilities --- */
+.bg-pattern-dots {
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-pattern-grid {
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), 
+                  linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Custom Components --- */
+.gradient-text {
+  background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tech-card {
+  background: white;
+  border: 1px solid #dadce0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .tech-card {
+  background: #1e1e1e;
+  border-color: #3c4043;
+}
+
+.tech-card:hover {
+  border-color: #4285F4 !important;
+  box-shadow: 0 10px 25px -5px rgba(66, 133, 244, 0.2);
+  transform: translateY(-5px);
+}
+
+/* --- Animations --- */
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(50px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-content { 
+  animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+@media print { 
+  .no-print { display: none !important; } 
+}
