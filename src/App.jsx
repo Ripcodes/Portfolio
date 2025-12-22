@@ -42,6 +42,22 @@ const PROJECTS = [
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Resume Handler: Opens in new tab and triggers download
+  const handleDownloadResume = () => {
+    const resumeUrl = '/PranavDakle_Resume.pdf';
+    
+    // Open in new tab
+    window.open(resumeUrl, '_blank');
+    
+    // Force download
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.setAttribute('download', 'PranavDakle_Resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+  };
+
   // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -125,7 +141,7 @@ const App = () => {
         .modal-content { animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         @media print { .no-print { display: none !important; } }
       `}</style>
-
+      
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-gray-800 backdrop-blur-md bg-[#121212]/85 no-print">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -142,9 +158,11 @@ const App = () => {
             <a href="#philosophy" className="text-gray-300 hover:text-white transition">Philosophy</a>
             <a href="#projects" className="text-gray-300 hover:text-white transition">Projects</a>
             <a href="#stack" className="text-gray-300 hover:text-white transition">Stack</a>
-            <button onClick={() => window.print()} className="bg-[#4285F4] text-white px-6 py-2 rounded-full font-medium shadow-md shadow-blue-500/20 hover:bg-blue-700 transition">Download Resume</button>
+            {/* CHANGED: onClick handler updated to handleDownloadResume */}
+            <button onClick={handleDownloadResume} className="bg-[#4285F4] text-white px-6 py-2 rounded-full font-medium shadow-md shadow-blue-500/20 hover:bg-blue-700 transition">Resume PDF</button>
           </div>
         </div>
+
       </nav>
 
       <div className="bg-pattern-dots">
@@ -312,7 +330,7 @@ const App = () => {
                   <div className="w-1/2 h-1/2 bg-[#FBBC05]"></div>
                   <div className="w-1/2 h-1/2 bg-[#EA4335]"></div>
                 </div>
-                <span className="text-xl font-bold text-white">Pranav Patil</span>
+                <span className="text-xl font-bold text-white">Pranav Dakle</span>
               </div>
               <p className="text-gray-400 max-sm leading-relaxed mb-6">
                 I build automated, secure, and self-healing digital ecosystems. Specializing in bridging the gap between development and mission-critical operations.
@@ -320,20 +338,12 @@ const App = () => {
               <div className="flex space-x-4">
                 {['github', 'linkedin', 'twitter'].map((social) => (
                   <a key={social} href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white transition group">
-                    <img src={`https://cdn.simpleicons.org/${social}`} className={`w-5 h-5 group-hover:invert invert`} alt={social} />
+                    <img src={`https://cdn.simpleicons.org/${social}`} className="w-5 h-5 group-hover:invert invert" alt={social} />
                   </a>
                 ))}
               </div>
             </div>
-            <div>
-              <h4 className="font-bold mb-6 text-white uppercase text-xs tracking-widest">Navigation</h4>
-              <ul className="space-y-4 text-sm text-gray-400">
-                <li><a href="#projects" className="hover:text-[#4285F4] transition">Case Studies</a></li>
-                <li><a href="#stack" className="hover:text-[#4285F4] transition">Technical Stack</a></li>
-                <li><button onClick={() => window.print()} className="hover:text-[#4285F4] transition text-left">Resume PDF</button></li>
-                <li><a href="mailto:hello@codzy.tech" className="hover:text-[#4285F4] transition">Contact Direct</a></li>
-              </ul>
-            </div>
+            
             <div>
               <h4 className="font-bold mb-6 text-white uppercase text-xs tracking-widest">Current Status</h4>
               <div className="p-4 rounded-2xl bg-gray-900 border border-gray-800">
@@ -347,7 +357,7 @@ const App = () => {
             </div>
           </div>
           <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-            <p>© 2025 Pranav Patil. All rights reserved.</p>
+            <p>© 2025 Pranav Dakle. All rights reserved.</p>
             <div className="flex gap-6">
               <span>Built with Vite + React</span>
               <span>100% Automated Deployment</span>
