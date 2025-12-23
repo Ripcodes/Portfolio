@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { FaLinkedin } from "react-icons/fa";
+
+
 
 // --- Configuration & Data ---
 const PROJECTS = [
@@ -7,35 +10,40 @@ const PROJECTS = [
     category: "DevOps",
     description: "Automated lifecycle from code commit to server deployment for a Hospital Management System.",
     points: ["Built hybrid pipeline with GitHub Actions & Jenkins.", "Integrated SonarQube quality gates.", "Managed artifact versioning via Nexus.", "Reduced manual overhead significantly."],
-    stack: ["Jenkins", "SonarQube", "Nexus", "GitHub Actions"]
+    stack: ["Jenkins", "SonarQube", "Nexus", "GitHub Actions"],
+    link: "https://github.com/pranavdaklepatil/Devops.git"
   },
   {
     title: "LLM Paraphrasing Tool",
     category: "AI/ML Infrastructure",
     description: "Scalable platform with FastAPI backend and Streamlit frontend.",
     points: ["Architected backend on EC2 with Docker.", "Multi-stage CI/CD pipelines.", "LoRA fine-tuning for 40% faster inference.", "Optimized AI signature reduction."],
-    stack: ["FastAPI", "Docker", "S3", "CloudFront"]
+    stack: ["FastAPI", "Docker", "S3", "CloudFront"],
+    link: "https://github.com/pranavdaklepatil/Para_Phraser.git"
   },
   {
     title: "Multi-Tier Web App Orchestration",
     category: "Cloud Native",
     description: "Containerized full-stack application managed on Kubernetes.",
     points: ["Dockerized Frontend, Backend, and DB.", "Kubernetes Services & Deployments for HA.", "Prometheus & Grafana monitoring setup.", "Zero-downtime rolling updates."],
-    stack: ["Kubernetes", "Docker", "Prometheus", "Grafana"]
+    stack: ["Kubernetes", "Docker", "Prometheus", "Grafana"],
+    link: "/"
   },
   {
     title: "Codzy: AI Website Builder",
     category: "Major Project",
     description: "AI-driven static website generator using real-time prompt engineering.",
     points: ["FastAPI microservices architecture.", "Containerized deployment on AWS EC2.", "Nginx reverse proxy & SSL configuration.", "Vector search + embeddings integration."],
-    stack: ["Python", "FastAPI", "LLMs", "Docker", "AWS"]
+    stack: ["Python", "FastAPI", "LLMs", "Docker", "AWS"],
+    link: "https://codzy-agent.vercel.app"
   },
   {
     title: "Cloud Portfolio Infrastructure",
     category: "Personal Brand",
     description: "This portfolio website, showcasing cloud hosting and DevOps best practices.",
     points: ["Automated build/deploy via GitHub Actions.", "AWS S3 + CloudFront CDN routing.", "Route53 HTTPS configuration.", "Global load time <100ms."],
-    stack: ["React", "Vite", "AWS", "GitHub Actions"]
+    stack: ["React", "Vite", "AWS", "GitHub Actions"],
+    link: "/"
   }
 ];
 
@@ -45,10 +53,10 @@ const App = () => {
   // Resume Handler: Opens in new tab and triggers download
   const handleDownloadResume = () => {
     const resumeUrl = '/PranavDakle_Resume.pdf';
-    
+
     // Open in new tab
     window.open(resumeUrl, '_blank');
-    
+
     // Force download
     const link = document.createElement('a');
     link.href = resumeUrl;
@@ -97,12 +105,12 @@ const App = () => {
           --card-border: #3c4043;
         }
         body {
-          font-family: 'Google Sans', sans-serif;
+          font-family: "Inter Tight", sans-serif; 
           background-color: var(--bg-color);
           color: var(--text-main);
           margin: 0;
         }
-        .mono { font-family: 'Roboto Mono', monospace; }
+        .mono { font-family: "Inter Tight", sans-serif; }
         .bg-pattern-dots {
           background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
           background-size: 24px 24px;
@@ -141,7 +149,7 @@ const App = () => {
         .modal-content { animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         @media print { .no-print { display: none !important; } }
       `}</style>
-      
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-gray-800 backdrop-blur-md bg-[#121212]/85 no-print">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -167,13 +175,13 @@ const App = () => {
 
       <div className="bg-pattern-dots">
         {/* Hero Header */}
-        <header id="home" className="pt-48 pb-32 px-6">
+        <header id="home" className="pt-[8rem] md:pt-48 pb-32 px-6">
           <div className="max-w-5xl mx-auto text-center reveal-on-scroll">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 bg-[#34A853]/10 text-[#34A853] rounded-full text-xs font-bold tracking-widest uppercase no-print">
               <span className="w-2 h-2 bg-[#34A853] rounded-full"></span>
               Available for Freelance Projects and Full-time Roles
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tighter leading-tight text-white">
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight leading-tight text-white">
               Engineering <span className="gradient-text">Scalability</span> <br className="hidden md:block" /> & Security.
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
@@ -204,7 +212,7 @@ const App = () => {
                     { n: 3, color: "#EA4335", bg: "rgba(234, 67, 53, 0.1)", title: "Scalable by Design:", desc: "Systems should grow without re-architecture." }
                   ].map((item) => (
                     <li key={item.n} className="flex items-start space-x-3">
-                      <span 
+                      <span
                         style={{ backgroundColor: item.bg, color: item.color }}
                         className="mt-1 w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold shrink-0"
                       >
@@ -245,45 +253,45 @@ const App = () => {
               <p className="text-gray-500">Professional-grade tools I use to build, secure, and scale.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <StackCategory 
-                title="Cloud & DevOps" 
-                color="#4285F4" 
+              <StackCategory
+                title="Cloud & DevOps"
+                color="#4285F4"
                 items={[
-                  { n: "AWS Infrastructure", s: "amazonaws" },
+                  { n: "AWS Infrastructure", s: "aws" },
                   { n: "Kubernetes", s: "kubernetes" },
                   { n: "Docker Containers", s: "docker" },
                   { n: "Terraform IaC", s: "terraform" },
                   { n: "Jenkins Pipelines", s: "jenkins" }
-                ]} 
+                ]}
               />
-              <StackCategory 
-                title="Security & Defense" 
-                color="#EA4335" 
+              <StackCategory
+                title="Security & Defense"
+                color="#EA4335"
                 items={[
-                  { n: "SonarQube Static", s: "sonarqube" },
+                  { n: "SonarQube Static", s: "Sonar" },
                   { n: "Nginx Security", s: "nginx" },
                   { n: "Hardened Linux", s: "linux" },
                   { n: "Prometheus Monitoring", s: "prometheus" }
-                ]} 
+                ]}
               />
-              <StackCategory 
-                title="Programming" 
-                color="#FBBC05" 
+              <StackCategory
+                title="Programming"
+                color="#FBBC05"
                 items={[
                   { n: "Python (FastAPI)", s: "python" },
                   { n: "C++ Core", s: "cplusplus" },
                   { n: "JavaScript (React)", s: "javascript" },
                   { n: "Java Development", s: "oracle" }
-                ]} 
+                ]}
               />
-              <StackCategory 
-                title="AI & IoT" 
-                color="#34A853" 
+              <StackCategory
+                title="AI & IoT"
+                color="#34A853"
                 items={[
-                  { n: "LLM Engineering", s: "openai" },
+                  { n: "LLM Engineering", s: "Ollama" },
                   { n: "MQTT Protocols", s: "mqtt" },
                   { n: "Automated CI/CD", s: "githubactions" }
-                ]} 
+                ]}
               />
             </div>
           </div>
@@ -298,8 +306,8 @@ const App = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {PROJECTS.map((project, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   onClick={() => setSelectedProject(project)}
                   className="tech-card p-8 rounded-3xl cursor-pointer reveal-on-scroll"
                 >
@@ -321,8 +329,8 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-black pt-20 pb-10 px-6 border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-1 md:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 justify-between w-full">
+            <div className="col-span-1">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-6 h-6 flex flex-wrap transform rotate-45">
                   <div className="w-1/2 h-1/2 bg-[#4285F4]"></div>
@@ -336,14 +344,15 @@ const App = () => {
                 I build automated, secure, and self-healing digital ecosystems. Specializing in bridging the gap between development and mission-critical operations.
               </p>
               <div className="flex space-x-4">
-                {['github', 'linkedin', 'twitter'].map((social) => (
-                  <a key={social} href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white transition group">
-                    <img src={`https://cdn.simpleicons.org/${social}`} className="w-5 h-5 group-hover:invert invert" alt={social} />
-                  </a>
-                ))}
+                <a href='https://github.com/pranavdaklepatil' className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white transition group">
+                  <img src={`https://cdn.simpleicons.org/github/111111`} className="w-5 h-5 group-hover:invert invert" alt="GitHub" />
+                </a>
+                <a href="https://www.linkedin.com/in/pranav-dakle/" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white transition group">
+                  <FaLinkedin className="w-5 h-5 group-hover:invert invert text-zinc-900" />
+                </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-bold mb-6 text-white uppercase text-xs tracking-widest">Current Status</h4>
               <div className="p-4 rounded-2xl bg-gray-900 border border-gray-800">
@@ -376,8 +385,8 @@ const App = () => {
                   <span className="text-[#4285F4] font-bold text-xs uppercase tracking-widest block mb-2">{selectedProject.category}</span>
                   <h2 className="text-3xl font-bold text-white leading-tight">{selectedProject.title}</h2>
                 </div>
-                <button 
-                  onClick={() => setSelectedProject(null)} 
+                <button
+                  onClick={() => setSelectedProject(null)}
                   className="p-2 hover:bg-gray-800 rounded-full transition group"
                 >
                   <svg className="w-6 h-6 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -397,9 +406,16 @@ const App = () => {
                 ))}
               </div>
             </div>
-            <div className="bg-gray-800/50 p-6 flex justify-end">
-              <button 
-                onClick={() => setSelectedProject(null)} 
+            <div className="bg-gray-800/50 p-6 flex justify-between items-center">
+              <a
+                href={selectedProject.link}
+                className="px-6 py-2 rounded-full bg-[#4285F4] text-white font-medium hover:bg-blue-600 transition"
+              >
+                View Project
+              </a>
+
+              <button
+                onClick={() => setSelectedProject(null)}
                 className="px-6 py-2 rounded-full bg-[#4285F4] text-white font-medium hover:bg-blue-600 transition"
               >
                 Close
@@ -420,7 +436,11 @@ const StackCategory = ({ title, color, items }) => (
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-3">
           <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#2d2e31] shrink-0">
-            <img src={`https://cdn.simpleicons.org/${item.s}`} className="w-5 h-5 invert" alt={item.n} />
+            <img src={`https://cdn.simpleicons.org/${item.s}`} className="w-5 h-5 invert" alt={item.n}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = "/aws.webp";
+              }} />
           </div>
           <span className="text-sm font-medium text-gray-300">{item.n}</span>
         </div>
